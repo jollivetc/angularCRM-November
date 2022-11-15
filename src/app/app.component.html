@@ -6,4 +6,5 @@
 
 <crm-login></crm-login>
 
-<crm-dummy></crm-dummy>
+<crm-dummy label="Hello" (clicked)="onMessage($event)"></crm-dummy>
+<crm-dummy [label]="title" (clicked)="onMessage2($event)"></crm-dummy>

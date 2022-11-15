@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularCRM';
+
+  onMessage(event:string):void{
+    console.log(event)
+  }
+  onMessage2($event:string):void{
+    console.warn($event);
+  }
 }

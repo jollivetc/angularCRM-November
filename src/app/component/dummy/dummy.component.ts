@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'crm-dummy',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DummyComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  label:string='';
+  @Output()
+  clicked: EventEmitter<string>= new EventEmitter<string>();
 
+  constructor() { }
   ngOnInit(): void {
+  }
+
+  onClicked():void{
+    this.clicked.emit(`${this.label} with random`)
   }
 
 }
