@@ -1,10 +1,4 @@
-<span>{{ title }} app is running!</span>
-<br>
+<h1>{{ title }} app is running!</h1>
 
-<span>{{cars}}</span>
 
-<ul>
-  <li *ngFor="let car of cars; let isOdd = odd">
-    <span (click)="myAlert(car)" class="red" [ngClass]="'bold'">{{car}}</span>
-  </li>
-</ul>
+<crm-login></crm-login>
