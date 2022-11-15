@@ -6,12 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Apside';
-
-  cars = ['Toyota', 'Peugeot', 'Renault', 'Citroen']
-
-
-  myAlert(car:string):void{
-    console.log(car);
-  }
+  title = 'angularCRM';
 }
