@@ -2,6 +2,14 @@
   <p>
     <label for="login">Login</label>
     <input type="text" id="login" formControlName="login"/>
+    <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.invalid">
+      <span *ngIf="loginForm.get('login')?.errors?.['required']">
+        valeur obligatoire
+      </span>
+      <span *ngIf="loginForm.get('login')?.errors?.['minlength']">
+        3 caractères obligatoires
+      </span>
+    </span>
   </p>
   <p>
     <label for="password">Password</label>
