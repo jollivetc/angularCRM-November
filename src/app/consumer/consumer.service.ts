@@ -13,4 +13,12 @@ export class ConsumerService {
   getAll():Observable<Consumer[]>{
     return this.http.get<Consumer[]>('/api/consumers')
   }
+
+  findForCriteria(criteria:string):Observable<Consumer[]>{
+    return this.http.get<Consumer[]>(`/api/consumers?q=${criteria}`)
+  }
+
+  createConsumer(consumer:Consumer):Observable<any>{
+    return this.http.post<any>('/api/consumers', consumer);
+  }
 }

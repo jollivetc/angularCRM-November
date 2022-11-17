@@ -1,8 +1,12 @@
-<input type="text">
-
+<input type="text" [(ngModel)]="searchCriteria"
+      (keyup)="keyUp.next($event)">
+<a matTooltip="Add a consumer"
+      routerLink="/consumer-form">
+    <mat-icon>person_add</mat-icon>
+  </a>
 <table>
-  <tr *ngfor="let consumer of consumersObs | async">
-    <td>{{consumer.id}}</td>
+  <tr *ngFor="let consumer of consumersObs | async">
+    <td>{{consumer.civility}}</td>
     <td>{{consumer.lastname}}</td>
     <td>{{consumer.firstname}}</td>
     <td>{{consumer.email}}</td>
