@@ -24,10 +24,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       complete: ()=>{console.log('Complete')}
     }
 
+    console.log('avant')
     const subscription = this.demoObservable.test1().pipe(
       map(x=>x*10),
       take(2)
     ).subscribe(subscriber);
+    console.log('after')
     this.subs.push(subscription);
   }
   ngOnDestroy(): void {

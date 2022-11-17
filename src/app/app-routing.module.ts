@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'home', component:HomeComponent, canActivate:[AuthenticationGuard]},
   {path:'consumer-list', component:ConsumerListComponent, canActivate:[AuthenticationGuard]},
   {path:'consumer-form', component:ConsumerFormComponent, canActivate:[AuthenticationGuard]},
+  {path:'consumer-form/:id', component:ConsumerFormComponent, canActivate:[AuthenticationGuard]},
   {path:'**', redirectTo:'home', pathMatch:'full'}
 ];
 

@@ -1,5 +1,5 @@
 <input type="text" [(ngModel)]="searchCriteria"
-      (keyup)="keyUp.next($event)">
+      (keyup)="search()">
 <a matTooltip="Add a consumer"
       routerLink="/consumer-form">
     <mat-icon>person_add</mat-icon>
@@ -11,6 +11,11 @@
     <td>{{consumer.firstname}}</td>
     <td>{{consumer.email}}</td>
     <td>{{consumer.phone | phone}}</td>
-    <td></td>
+    <td>
+      <a matTooltip="Edition"
+        [routerLink]="['/consumer-form', consumer.id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+    </td>
   </tr>
 </table>

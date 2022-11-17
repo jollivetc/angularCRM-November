@@ -31,11 +31,13 @@
   </p>
   <div class="buttons-bar">
     <!-- Bouton d'annulation -->
-    <button (click)="cancel()" color="warn" id="cancelButton" mat-icon-button matTooltip="Annuler" type="button">
+    <button (click)="cancel()" color="warn" id="cancelButton"
+        mat-icon-button matTooltip="Annuler" type="button">
       <mat-icon>cancel</mat-icon>
     </button>
     <!-- Bouton de validation du formulaire -->
-    <button [disabled]="!consumerForm.valid" color="primary" id="validButton" mat-icon-button matTooltip="Valider" type="submit">
+    <button [disabled]="!consumerForm.valid" color="primary"
+      id="validButton" mat-icon-button matTooltip="Valider" type="submit">
       <mat-icon>check</mat-icon>
     </button>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ConsumerService } from '../consumer.service';
 import { Consumer } from '../model/consumer';
@@ -14,13 +14,16 @@ export class ConsumerFormComponent implements OnInit, OnDestroy {
 
   consumerForm:FormGroup;
   private subs:Subscription[]=[]
-  constructor(private consumerService: ConsumerService, private router:Router) {
+  constructor(private consumerService: ConsumerService, private router:Router, private route:ActivatedRoute) {
     this.consumerForm = new FormGroup({
+      id:new FormControl(),
       civility: new FormControl('', [Validators.required]),
       firstname: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(10)])
+      phone: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      createdAt: new FormControl(),
+      updatedAt: new FormControl()
     })
   }
   ngOnDestroy(): void {
@@ -28,11 +31,22 @@ export class ConsumerFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.subs.push(this.route.paramMap.subscribe({
+      next: (params) => {
+        this.subs.push(this.consumerService.getConsumer(params.get('id')!).subscribe({
+          next:(data:Consumer)=>{this.consumerForm.patchValue(data)},
+          error:(error:Error)=>{console.error(error)},
+          complete:()=>{}
+        }))
+      },
+      error: (error)=> {console.log(error)},
+      complete: ()=>{}
+    }))
   }
 
   validate():void{
-    this.subs.push(this.consumerService.createConsumer(this.consumerForm.value).subscribe({
-      next:(data:any)=>{this.router.navigateByUrl('/consumer-list')},
+    this.subs.push(this.consumerService.saveConsumer(this.consumerForm.value).subscribe({
+      next:()=>{this.router.navigateByUrl('/consumer-list')},
       error:(error:Error)=>{console.error(error)},
       complete:()=>{}
     }))
