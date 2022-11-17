@@ -1,0 +1,12 @@
+<input type="text">
+
+<table>
+  <tr *ngfor="let consumer of consumersObs | async">
+    <td>{{consumer.id}}</td>
+    <td>{{consumer.lastname}}</td>
+    <td>{{consumer.firstname}}</td>
+    <td>{{consumer.email}}</td>
+    <td>{{consumer.phone | phone}}</td>
+    <td></td>
+  </tr>
+</table>
